@@ -42,6 +42,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.hamcrest.core.AllOf.allOf;
+import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.*;
 
 import java.lang.reflect.InvocationTargetException;
@@ -244,7 +245,7 @@ public class ExampleInstrumentedTest {
     public void validateBiometricAfterPatching() {
         // Not working as it is not an intent call
         onView(withId(R.id.biometric_auth)) .perform(click());
-        onView(withText("Pass")).perform(click());
+        onView(withText(containsString("Pass"))).perform(click());
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
